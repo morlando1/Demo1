@@ -6,12 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Liquibase Action
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: liquibase/liquibase-github-action@v2
         with:
           operation: 'status'
-          classpath: 'example/changelogs'
-          changeLogFile: 'samplechangelog.h2.sql'
+          classpath: 'liquibase_HR/changelogs'
+          changeLogFile: 'changelog1.xml'
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          liquibaseProLicenseKey: ${{ secrets.LIQUIBASE_PRO_LICENSE_KEY}}
           url: ${{ secrets.URL }}
