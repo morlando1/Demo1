@@ -1,0 +1,16 @@
+on: [workflow-dispatch]
+
+jobs:
+  test-liquibase-action:
+    runs-on: ubuntu-latest
+    name: Test Liquibase Actionsteps:
+    uses: liquibase/liquibase-github-action@v3
+    with:
+      operation: 'status'
+      classpath: 'liquibase_hr/changelogs'
+      changeLogFile: 'changelog1.xml'
+      username: ${{ secrets.USERNAME }}
+      password: ${{ secrets.PASSWORD }}
+      liquibaseProLicenseKey: ${{ secrets.LIQUIBASE_PRO_LICENSE_KEY}}
+      url: ${{ secrets.URL }}
+      count: 2
